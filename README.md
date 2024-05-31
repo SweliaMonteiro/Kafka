@@ -15,7 +15,7 @@ Implement the Eureka service that will be used to register and discover services
 #### User Service
 1. Add the `spring-cloud-starter-netflix-eureka-client` dependency in the pom.xml file.
 2. Add the required properties in the application.properties file to register the User Service with Eureka Server, and provide the url of the Eureka Server.
-3. Three different instances of the User Service should be running at port `4141`, `4142` and `4143`
+3. Three different instances of the User Service should be running at port `4141`, `4142` and `4143`. Implement this using environment variables and running different configurations of the User Service for each port.
 4. Create a sample GET API to get a sample user details by userId.
 
 #### Product Service
