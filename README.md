@@ -2,7 +2,7 @@
 
 ## Problem Statement
 
-Implement the Eureka service that will be used to register and discover services in the system.
+Implement the Eureka service that will be used to register and discover services in the system. Register the User Service and Product Service with the Eureka service. Test if the load from Product Service is distributed among the instances of User Service.
 
 ## Requirements
 #### Eureka Service
