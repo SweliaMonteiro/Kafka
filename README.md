@@ -15,13 +15,13 @@ Implement the Eureka service that will be used to register and discover services
 #### User Service
 1. Add the `spring-cloud-starter-netflix-eureka-client` dependency in the pom.xml file.
 2. Add the required properties in the application.properties file to register the User Service with Eureka Server, and provide the url of the Eureka Server.
-3. Three different instances of the User Service should be running at port 4141, 4142, and 4143.
+3. Three different instances of the User Service should be running at port `4141`, `4142` and `4143`
 4. Create a sample GET API to get a sample user details by userId.
 
 #### Product Service
 1. Add the `spring-cloud-starter-netflix-eureka-client` dependency in the pom.xml file.
 2. Add the required properties in the application.properties file to register the Product Service with Eureka Server, and provide the url of the Eureka Server.
-3. Only one instance of the Product Service should be running at port 8181.
+3. Only one instance of the Product Service should be running at port `8181`
 4. Create a sample GET API to validate the user by userId and get a sample product details by productId.
 5. To validate the user, call the UserService API using the RestTemplate. Inorder to distribute the load to UserService instances annotate the RestTemplate with `@LoadBalanced`.
 6. To test the load balancing, call the Product Service API multiple times and check the logs of the User Service instances to see if the requests are distributed among the instances of User Service.
