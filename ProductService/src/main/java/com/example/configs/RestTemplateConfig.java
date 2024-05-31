@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 public class RestTemplateConfig {
 
     // To enable client side load balancing in RestTemplate so that ProductService can call UserService and load will be distributed evenly to all the instances of UserService
-    // Here UserService is client to ProductService
+    // Here ProductService is the client and UserService is the server
     @LoadBalanced
     @Bean  // To create object bean of RestTemplate and store in Spring container and use the bean when required
     public RestTemplate getRestTemplate() {
