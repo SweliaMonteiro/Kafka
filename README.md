@@ -1,8 +1,8 @@
-# Eureka Service
+# Eureka Service & API Gateway Service
 
 ## Problem Statement
 
-Implement the Eureka service that will be used to register and discover services in the system. Register the User Service and Product Service with the Eureka service. Test if the load from Product Service is distributed among the instances of User Service.
+Implement the Eureka service that will be used to register and discover services in the system. Register the User Service and Product Service with the Eureka service. Test if the load from Product Service is distributed among the instances of User Service. Also implement the API Gateway service that will forward the requests to the User Service instances in a load balanced manner.
 
 ## Requirements
 #### Eureka Service
