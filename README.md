@@ -32,5 +32,5 @@ Implement the Eureka service that will be used to register and discover services
    - `spring-cloud-starter-gateway` : To create the API Gateway Service.
    - `spring-cloud-starter-loadbalancer` : To use the LoadBalancerClient.
 2. Add the required properties in the application.properties file to register the API Gateway Service with Eureka Server, and provide the url of the Eureka Server. Run the API Gateway Service at port `5050`
-3. Create a sample route to forward the request to the User Service. The route should be `/user/**` and should forward the request to the UserService instances in load balanced manner.
+3. Create a sample route to forward the request to the User Service. The route should be `/users/**` and should forward the request to the UserService instances in load balanced manner.
 4. To test the load balancing, call the API Gateway Service API multiple times and check the logs of the User Service instances to see if the requests are distributed among the instances of User Service.
