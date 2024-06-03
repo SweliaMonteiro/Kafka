@@ -6,6 +6,8 @@ import com.example.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+
 
 @RestController
 @RequestMapping("/users")
@@ -19,6 +21,7 @@ public class UserController {
     @GetMapping("/{id}")
     public User getUserById(@PathVariable("id") long id) {
         try {
+            System.out.println(new Date());  // To test if API Gateway is distributing load to different instances of UserService
             return userService.getUserById(id);
         }
         catch (UserNotFoundException e) {
