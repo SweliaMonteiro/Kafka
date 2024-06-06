@@ -1,4 +1,4 @@
-package com.example.models;
+package com.example.dtos;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -6,9 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class User {
-
-    private long id;
+public class LogInRequestDto {
 
     private String username;
 

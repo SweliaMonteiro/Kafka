@@ -1,36 +1,22 @@
-# Eureka Service & API Gateway Service
+# Kafka for Asynchronous Communication
 
 ## Problem Statement
 
-Implement the Eureka service that will be used to register and discover services in the system. Register the User Service and Product Service with the Eureka service. Test if the load from Product Service is distributed among the instances of User Service. Also implement the API Gateway service that will forward the requests to the User Service instances in a load balanced manner.
+Implement the Kafka for Asynchronous Communication between the User Service and Notification Service. The User Service will publish a message to the Kafka topic NotifyUser whenever a user logs in. The Notification Service will listen to the Kafka topic NotifyUser and sends an email notification to the user.
 
 ## Requirements
-#### Eureka Service
-1. Refer the documentation: [Introduction to Spring Cloud Netflix – Eureka](https://www.baeldung.com/spring-cloud-netflix-eureka)
-2. Add the `spring-cloud-starter-netflix-eureka-server` dependency in the pom.xml file.
-3. Add the `@EnableEurekaServer` annotation in the main class to enable the Eureka server.
-4. Add the required properties in the application.properties file to disable the Eureka Client as we are not going to register the Eureka Server itself with Eureka Server. Run the Eureka Server at port `8761`
-5. To access Eureka Server dashboard : http://localhost:8761/
+#### User Service - Publisher
+1. Add the `org.springframework.kafka` dependency in the pom.xml file inorder to send the messages to the Kafka topic.
+2. Implement a logIn API that will create a sample User and returns a login successful message.
+3. This API should also publish a message(UserDto object) to the Kafka topic `NotifyUser` in the JSON string format to notify the user about the login using Kafka Queue.
 
-#### User Service
-1. Add the `spring-cloud-starter-netflix-eureka-client` dependency in the pom.xml file.
-2. Add the required properties in the application.properties file to register the User Service with Eureka Server, and provide the url of the Eureka Server.
-3. Three different instances of the User Service should be running at port `4141`, `4142` and `4143`. Implement this using environment variables and running different configurations of the User Service for each port.
-4. Create a sample GET API to get a sample user details by userId.
+#### Notification Service - Subscriber
+1. Add the `org.springframework.kafka` dependency in the pom.xml file inorder to receive the messages from the Kafka topic.
+2. Create a KafkaListener method that will listen to the Kafka topic `NotifyUser` and sends an email notification to the user using the details from the UserDto object passed in the message.
+3. Refer the below link to send an email : [Send Email in Java SMTP with TLS Authentication](https://www.digitalocean.com/community/tutorials/javamail-example-send-mail-in-java-smtp#send-email-in-java-smtp-with-tls-authentication)
+4. Since using Gmail SMTP server to send an email, you need to use App Password to authenticate the email. To generate App Password : [Generate App Passwords](https://myaccount.google.com/apppasswords) (You need to enable 2-Step Verification to generate App Passwords in Gmail)
 
-#### Product Service
-1. Add the `spring-cloud-starter-netflix-eureka-client` dependency in the pom.xml file.
-2. Add the required properties in the application.properties file to register the Product Service with Eureka Server, and provide the url of the Eureka Server.
-3. Only one instance of the Product Service should be running at port `8181`
-4. Create a sample GET API to validate the user by userId and get a sample product details by productId.
-5. To validate the user, call the UserService API using the RestTemplate. Inorder to distribute the load to UserService instances annotate the RestTemplate with `@LoadBalanced`.
-6. To test the load balancing, call the Product Service API multiple times and check the logs of the User Service instances to see if the requests are distributed among the instances of User Service.
-
-#### API Gateway Service
-1. Add the following dependencies in the pom.xml file:
-   - `spring-cloud-starter-netflix-eureka-client` : To register the API Gateway Service with Eureka Server.
-   - `spring-cloud-starter-gateway` : To create the API Gateway Service.
-   - `spring-cloud-starter-loadbalancer` : To use the LoadBalancerClient.
-2. Add the required properties in the application.properties file to register the API Gateway Service with Eureka Server, and provide the url of the Eureka Server. Run the API Gateway Service at port `5050`
-3. Create a sample route to forward the request to the User Service. The route should be `/users/**` and should forward the request to the UserService instances in load balanced manner.
-4. To test the load balancing, call the API Gateway Service API multiple times and check the logs of the User Service instances to see if the requests are distributed among the instances of User Service.
+#### Kafka
+1. Refer the documentation to download Kafka in your local system : [How to install Kafka with Zookeeper on Mac](https://www.conduktor.io/kafka/how-to-install-apache-kafka-on-mac/)
+2. Start the Zookeeper server by running the command in the terminal : `~/Downloads/kafka_2.12-3.7.0/bin/zookeeper-server-start.sh ~/Downloads/kafka_2.12-3.7.0/config/zookeeper.properties`
+3. Start the Kafka server by running the command in the terminal : `~/Downloads/kafka_2.12-3.7.0/bin/kafka-server-start.sh ~/Downloads/kafka_2.12-3.7.0/config/server.properties`
