@@ -20,3 +20,4 @@ Implement the Kafka for Asynchronous Communication between the User Service and 
 1. Refer the documentation to download Kafka in your local system : [How to install Kafka with Zookeeper on Mac](https://www.conduktor.io/kafka/how-to-install-apache-kafka-on-mac/)
 2. Start the Zookeeper server by running the command in the terminal : `~/Downloads/kafka_2.12-3.7.0/bin/zookeeper-server-start.sh ~/Downloads/kafka_2.12-3.7.0/config/zookeeper.properties`
 3. Start the Kafka server by running the command in the terminal : `~/Downloads/kafka_2.12-3.7.0/bin/kafka-server-start.sh ~/Downloads/kafka_2.12-3.7.0/config/server.properties`
+4. Test the Kafka functionality by firing logIn API of UserService in Postman and check if the email notification is sent by the NotificationService.
