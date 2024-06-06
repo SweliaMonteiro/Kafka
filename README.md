@@ -11,7 +11,7 @@ Implement the Kafka for Asynchronous Communication between the User Service and 
 3. This API should also publish a message(UserDto object) to the Kafka topic `NotifyUser` in the JSON string format to notify the user about the login using Kafka Queue.
 
 #### Notification Service - Subscriber
-1. Add the `org.springframework.kafka` dependency in the pom.xml file inorder to receive the messages from the Kafka topic.
+1. Add the `org.springframework.kafka` dependency in the pom.xml file inorder to receive the messages from the Kafka topic. Also add the `javax.mail` dependency to send an email.
 2. Create a KafkaListener method that will listen to the Kafka topic `NotifyUser` and sends an email notification to the user using the details from the UserDto object passed in the message.
 3. Refer the below link to send an email : [Send Email in Java SMTP with TLS Authentication](https://www.digitalocean.com/community/tutorials/javamail-example-send-mail-in-java-smtp#send-email-in-java-smtp-with-tls-authentication)
 4. Since using Gmail SMTP server to send an email, you need to use App Password to authenticate the email. To generate App Password : [Generate App Passwords](https://myaccount.google.com/apppasswords) (You need to enable 2-Step Verification to generate App Passwords in Gmail)
