@@ -2,7 +2,7 @@
 
 ## Problem Statement
 
-Implement the Kafka for Asynchronous Communication between the User Service and Notification Service. The User Service will publish a message to the Kafka topic NotifyUser whenever a user logs in. The Notification Service will listen to the Kafka topic NotifyUser and sends an email notification to the user.
+Implement the Kafka for Asynchronous Communication between the User Service and Notification Service. The User Service will publish a message to the Kafka topic `NotifyUser` whenever a user logs in. The Notification Service will listen to the Kafka topic `NotifyUser` and sends an email notification to the user.
 
 ## Requirements
 #### User Service - Publisher
